@@ -580,3 +580,18 @@ p {
     margin: 4px 0 0 0;
 }
 
+.cert-center-wrapper embed {
+    width: 700px;
+    height: 575px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto; 
+}
+
+.cert-center-wrapper {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+
