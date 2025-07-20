@@ -47,24 +47,22 @@
             <ul class="nav-links">
                 <li><a href="#top">Home</a></li>
                 <li class="dropdown">
+                <a href="#">Projects ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#farmsimulator">Farm Game Demo</a></li>
+                    <li><a href="#blackboard">Blackboard AI Logic</a></li>
+                    <li><a href="#genetic">Genetic Algorithm</a></li>
+                    <li><a href="#pixelgame">Pixel Game Videos</a></li>
+                    <li><a href="#github-projects">GitHub Projects</a></li>
+                </ul>
+                </li>
+                <li class="dropdown">
                 <a href="#">Background▾</a>
                 <ul class="dropdown-content">
                     <li><a href="#education">Education</a></li>
                     <li><a href="#work">Employment</a></li>
                     <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                </ul>
-                </li>
-                <li class="dropdown">
-                <a href="#">Projects ▾</a>
-                <ul class="dropdown-content">
-                    <li><a href="#github-projects">GitHub Projects</a></li>
-                    <li><a href="#pixelgame">Pixel Game Videos</a></li>
-                    <li><a href="#blackboard">Blackboard AI Logic</a></li>
-                    <li><a href="#genetic">Genetic Algorithm</a></li>
-                    <li><a href="#farmsimulator">Farm Game Demo</a></li>
-                    
-                    
                 </ul>
                 </li>
                 <li><a href="#contact">Contact</a></li>
@@ -80,6 +78,110 @@
             <p>
                I'm Sean Sanii, Computer Science Graduate based in London
             </p>
+
+            <h2 id="skills">Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <h3>Programming Languages</h3>
+                        <p>Java, C++ & C#</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Game Engines</h3>
+                        <p>Unreal Engine 5, Unity</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Databases & Data Analysis </h3>
+                        <p>MySQL, PostgresSQ, PowerBI, Database with Java Swing Authentication Integration</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Networking</h3>
+                        <p>Port forwarding, Raspberry Pi game server hosting, TCP/UDP networking knowledge</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Virtualisation & OS</h3>
+                        <p>QEMU, Linux (Ubuntu Server, Pop!_OS), command-line proficiency</p>
+                    </div>
+                </div>
+
+            <h2 id="videos">Demos</h2>
+            <div class="how-to-play-box">
+                <h3 id="farmsimulator">Farming Simulator <p>Followed Udemy Tutorial</p></h3>
+                <div class="how-to-play-grid">
+                    <ul>
+                        <li><strong>How to Play:</strong></li>
+                        <li>Use <strong>WASD</strong> or <strong>arrow keys</strong> to move around.</li>
+                        <li>Use your <strong>mouse</strong> to select a grid and <strong>left-click</strong> to dig the ground.</li>
+                        <li>Press <strong>I</strong> to open your inventory and select different seeds.</li>
+                        <li>Use keys <strong>1, 2, 3, 4</strong> to select different items in your inventory.</li>
+                    </ul>
+                    <ul>
+                        <li><strong>Gameplay loop:</strong> Dig → Water or Plant → Plant or Water → Sleep for the next day.</li>
+                        <li>Plants grow by one stage each day after sleep.</li>
+                        <li>When plants are fully grown, use the <strong>basket</strong> to harvest them.</li>
+                        <li>Press <strong>E</strong> on the bed to go to sleep.</li>
+                    </ul>
+                </div>
+            </div>
+            <iframe src="game2/index.html" width="100%" height="675" frameborder="0"></iframe>
+
+            <div class="video-plain" id="blackboard">
+                <div class="video-section-title">Blackboard AI Logic & Map Generation </div>
+                <video controls>
+                    <source src="videos/blackboard.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="video-plain" id="genetic">
+                <div class="video-section-title">Map Generation: Genetic Algorithm<p>Followed YouTube Tutorial</p></div>
+                <video controls>
+                    <source src="videos/genetic.mp4" type="video/mp4">
+                </video>
+            </div>
+   
+            <h3 id="pixelgame">Pixel Game - Command Design Pattern</h3>
+            <div class="video-grid">
+                <div class="video-card">
+                    <h3>Player Movement</h3>
+                    <video controls width="100%">
+                        <source src="videos/playermovement.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-card">
+                    <h3>Player Interaction</h3>
+                    <video controls width="100%">
+                        <source src="videos/interaction.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-card">
+                    <h3>Player Debuffs</h3>
+                    <video controls width="100%">
+                        <source src="videos/debuff.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-card">
+                    <h3>Turn-based Combat (In Development)</h3>
+                    <video controls width="100%">
+                        <source src="videos/combat.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <section id="github-projects">
+                <h2 id="projects">Projects</h2>
+                <h2 id="gitprojects">Featured GitHub Projects</h2>
+
+                <div class="repos-wrapper">
+                    <div id="repos" style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));"></div>  
+                </div>
+            </section>
 
             <div id="education-section">
             <h2 id="education">Education</h2>
@@ -164,13 +266,13 @@
 
             <h2 id="certifications">Certifications & Extracurricular</h2>
             <div class="grid-container">
-                <div class="cert-limitbreak-wrapper">
+                <!-- <div class="cert-limitbreak-wrapper">
                     <div class="grid-item">
                         <h3><strong>Udemy</strong></h3>
                         Microsoft Power BI Data Analyst<br>
                         <i id="progress">*In Progress*</i>
                     </div>
-                </div>
+                </div> -->
                 <div class="cert-limitbreak-wrapper">
                     <div class="grid-item">
                         <h3><strong>LimitBreak Mentee</strong></h3>
@@ -184,79 +286,16 @@
                 <embed src="certifications/problem_solving_basic.pdf" type="application/pdf" width="700px" height="575px" />
             </div>
 
-            <div class="cert-center-wrapper">
+            <!-- <div class="cert-center-wrapper">
                 <embed src="certifications/ue5.pdf" type="application/pdf" width="700px" height="575px" />
-            </div>
+            </div> -->
 
-            <h2 id="skills">Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <h3>Programming Languages</h3>
-                        <p>Java, C++, C#, Python</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Game Engines</h3>
-                        <p>Unreal Engine 5, Unity</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Databases & Data Analysis </h3>
-                        <p>MySQL, PostgresSQ, PowerBI, Database with Java Swing Authentication Integration</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Web Development</h3>
-                        <p>HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Networking</h3>
-                        <p>Port forwarding, Raspberry Pi game server hosting, TCP/UDP networking knowledge</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Virtualization & OS</h3>
-                        <p>QEMU, Linux (Ubuntu Server, Pop!_OS), command-line proficiency</p>
-                    </div>
-                </div>
+            
 
-           <section id="github-projects">
-                <h2 id="projects">Projects</h2>
-                <h2 id="gitprojects">Featured GitHub Projects</h2>
+           
 
-                <div class="repos-wrapper">
-                    <div id="repos" style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));"></div>  
-                </div>
-            </section>
-
-            <h3 id="pixelgame">Pixel Game - Command Design Pattern</h3>
-            <div class="video-grid">
-                <div class="video-card">
-                    <h3>Player Movement</h3>
-                    <video controls width="100%">
-                        <source src="videos/playermovement.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-card">
-                    <h3>Player Interaction</h3>
-                    <video controls width="100%">
-                        <source src="videos/interaction.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-card">
-                    <h3>Player Debuffs</h3>
-                    <video controls width="100%">
-                        <source src="videos/debuff.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-card">
-                    <h3>Turn-based Combat (In Development)</h3>
-                    <video controls width="100%">
-                        <source src="videos/combat.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-            <div class="code-entry">
+            
+            <!-- <div class="code-entry">
                 <div class="code-top">
                     <div class="code-left">
                         <h3>Command Pattern Base Class</h3>
@@ -281,44 +320,12 @@
                     </div>
                 </div>
                 <img src="screenshots/command2.png" alt="Player Input Screenshot" class="code-image">
-            </div>
+            </div> -->
 
-            <div class="video-plain" id="blackboard">
-                <div class="video-section-title">Blackboard AI Logic & Map Generation </div>
-                <video controls>
-                    <source src="videos/blackboard.mp4" type="video/mp4">
-                </video>
-            </div>
+            
 
-            <div class="video-plain" id="genetic">
-                <div class="video-section-title">Map Generation: Genetic Algorithm<p>Followed YouTube Tutorial</p></div>
-                    <video controls>
-                        <source src="videos/genetic.mp4" type="video/mp4">
-                    </video>
-            </div>
-
-            <h2 id="videos">Demos</h2>
-            <div class="how-to-play-box">
-                <h3 id="farmsimulator">Farming Simulator</h3>
-                <div class="how-to-play-grid">
-                    <ul>
-                        <li><strong>How to Play:</strong></li>
-                        <li>Use <strong>WASD</strong> or <strong>arrow keys</strong> to move around.</li>
-                        <li>Use your <strong>mouse</strong> to select a grid and <strong>left-click</strong> to dig the ground.</li>
-                        <li>Press <strong>I</strong> to open your inventory and select different seeds.</li>
-                        <li>Use keys <strong>1, 2, 3, 4</strong> to select different items in your inventory.</li>
-                    </ul>
-                    <ul>
-                        <li><strong>Gameplay loop:</strong> Dig → Water or Plant → Plant or Water → Sleep for the next day.</li>
-                        <li>Plants grow by one stage each day after sleep.</li>
-                        <li>When plants are fully grown, use the <strong>basket</strong> to harvest them.</li>
-                        <li>Press <strong>E</strong> on the bed to go to sleep.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <iframe src="game2/index.html" width="100%" height="675" frameborder="0"></iframe>
-        </section>
+            
+        <!-- </section> -->
 
         <h2 id="contact">Contact</h2>
             <div id="contact-info">

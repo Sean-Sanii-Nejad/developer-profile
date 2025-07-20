@@ -196,6 +196,10 @@ p {
   color: #d3d9d4;
 }
 
+#education-section {
+  padding-top: 20px;
+}
+
 .edu-top {
   display: flex;
   justify-content: space-between;
@@ -574,6 +578,13 @@ p {
 }
 
 .video-section-title p {
+    font-size: 0.75em;
+    font-weight: 300;
+    color: #a0aec0;
+    margin: 4px 0 0 0;
+}
+
+#farmsimulator p {
     font-size: 0.75em;
     font-weight: 300;
     color: #a0aec0;
