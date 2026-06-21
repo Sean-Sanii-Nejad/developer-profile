@@ -3,356 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <title>My Website</title>
+    <meta name="description" content="Sean Sanii — Game Developer portfolio. Building a MOBA in Unreal Engine 5.">
+    <title>Sean Sanii | Game Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<script>
-    function toggleMenu() {
-        document.querySelector('.nav-links').classList.toggle('active');
-    }
-
-    function loadGitHubProjects() {
-        const username = "Sean-Sanii-Nejad";
-        const selectedRepos = ["BoardAITestEnv", "OpenGL-rendering", "AGD_MiniGame", "Genetic-Algorithm", "Crytography-Assignment", "hackerrank-3-months-preparation-kit"];
-        const container = document.getElementById("repos");
-
-        selectedRepos.forEach(repoName => {
-        fetch(`https://api.github.com/repos/${username}/${repoName}`)
-            .then(response => response.json())
-            .then(repo => {
-            const card = document.createElement("div");
-            card.className = "repo-card";
-
-            card.innerHTML = `
-                <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-                <p>${repo.description || "No description available."}</p>
-                <small>⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count} | 📝 ${repo.language || "N/A"}</small>
-            `;
-
-            container.appendChild(card);
-            })
-            .catch(error => {
-            console.error("Error fetching repo:", repoName, error);
-            });
-        });
-    }
-
-</script>
 <body>
-    <a id="top"></a>
-    <header>
-        <nav>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="#top" class="nav-logo">Sean Sanii</a>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
-                <li><a href="#top">Home</a></li>
-                <li class="dropdown">
-                <a href="#">Projects ▾</a>
-                <ul class="dropdown-content">
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#farmsimulator">Farm Game Demo</a></li>
-                    <li><a href="#blackboard">Blackboard AI Logic</a></li>
-                    <li><a href="#genetic">Genetic Algorithm</a></li>
-                    <li><a href="#pixelgame">Pixel Game Videos</a></li>
-                    <li><a href="#github-projects">GitHub Projects</a></li>
-                </ul>
-                </li>
-                <li class="dropdown">
-                <a href="#">Background▾</a>
-                <ul class="dropdown-content">
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#work">Employment</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                </ul>
-                </li>
+                <li><a href="#featured">Flagship</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/Sean-Sanii-Nejad" target="_blank">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/sean-sanii-nejad/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://www.dropbox.com/scl/fi/8ywiigerfk18rihhbwxxu/SeanCV.pdf?rlkey=g1cz2aayio5ajcjl8yn9un06k&st=cuudly5a&dl=0" target="_blank">CV</a></li>
+                <li class="nav-divider" aria-hidden="true"></li>
+                <li><a href="https://github.com/Sean-Sanii-Nejad" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/sean-sanii-nejad/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.dropbox.com/scl/fi/8ywiigerfk18rihhbwxxu/SeanCV.pdf?rlkey=g1cz2aayio5ajcjl8yn9un06k&st=cuudly5a&dl=0" target="_blank" rel="noopener">CV</a></li>
             </ul>
-        </nav>     
+        </nav>
     </header>
-    <main>
-        <section>
-            <img id="profile-image" src="photos/sean.jpg" alt="Profile Picture">
-            <p>
-               I'm Sean Sanii, Computer Science Graduate based in London
-            </p>
 
-            <h2 id="skills">Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <h3>Programming Languages</h3>
-                        <p>Java, C++ & C#</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Game Engines</h3>
-                        <p>Unreal Engine 5, Unity</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Databases & Data Analysis </h3>
-                        <p>MySQL, PostgresSQ, PowerBI, Database with Java Swing Authentication Integration</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Web Development</h3>
-                        <p>HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Networking</h3>
-                        <p>Port forwarding, Raspberry Pi game server hosting, TCP/UDP networking knowledge</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Virtualisation & OS</h3>
-                        <p>QEMU, Linux (Ubuntu Server, Pop!_OS), command-line proficiency</p>
+    <main id="top">
+        <section class="hero">
+            <div class="hero-content">
+                <img class="hero-photo" src="photos/sean.jpg" alt="Sean Sanii">
+                <p class="hero-eyebrow">Game Developer · London, UK</p>
+                <h1 class="hero-title">Sean Sanii</h1>
+                <p class="hero-tagline">
+                    Building a <strong>League of Legends–style MOBA</strong> in Unreal Engine 5 —
+                    champion abilities, combat systems, and multiplayer networking.
+                </p>
+                <div class="hero-actions">
+                    <a href="#featured" class="btn btn-primary">View Flagship Project</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">UE5</span>
+                    <span class="stat-label">Primary Engine</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">C++</span>
+                    <span class="stat-label">Core Language</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">MSc</span>
+                    <span class="stat-label">Computer Games</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured" class="section featured">
+            <div class="section-header">
+                <span class="section-label">Flagship Project</span>
+                <h2>MOBA Arena <span class="badge">In Development</span></h2>
+                <p class="section-desc">
+                    A top-down MOBA inspired by League of Legends, built from scratch in Unreal Engine 5.
+                    Focused on champion combat, ability systems, and online multiplayer.
+                </p>
+            </div>
+
+            <div class="featured-grid">
+                <div class="featured-main">
+                    <div class="media-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">▶</span>
+                            <p>Gameplay footage coming soon</p>
+                            <small>Add your MOBA demo video to <code>videos/moba.mp4</code></small>
+                        </div>
                     </div>
                 </div>
 
-            <h2 id="videos">Demos</h2>
-            <div class="how-to-play-box">
-                <h3 id="farmsimulator">Farming Simulator <p>Followed Udemy Tutorial</p></h3>
-                <div class="how-to-play-grid">
-                    <ul>
-                        <li><strong>How to Play:</strong></li>
-                        <li>Use <strong>WASD</strong> or <strong>arrow keys</strong> to move around.</li>
-                        <li>Use your <strong>mouse</strong> to select a grid and <strong>left-click</strong> to dig the ground.</li>
-                        <li>Press <strong>I</strong> to open your inventory and select different seeds.</li>
-                        <li>Use keys <strong>1, 2, 3, 4</strong> to select different items in your inventory.</li>
+                <div class="featured-details">
+                    <div class="tech-tags">
+                        <span class="tag">Unreal Engine 5</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprint</span>
+                        <span class="tag">Multiplayer</span>
+                        <span class="tag">GAS</span>
+                    </div>
+
+                    <h3>Systems in Progress</h3>
+                    <ul class="feature-list">
+                        <li>Top-down camera &amp; champion movement</li>
+                        <li>Ability casting &amp; cooldown management</li>
+                        <li>Combat damage, health &amp; targeting</li>
+                        <li>AI minions &amp; lane logic</li>
+                        <li>Client–server multiplayer architecture</li>
+                        <li>UI: health bars, ability HUD &amp; minimap</li>
                     </ul>
-                    <ul>
-                        <li><strong>Gameplay loop:</strong> Dig → Water or Plant → Plant or Water → Sleep for the next day.</li>
-                        <li>Plants grow by one stage each day after sleep.</li>
-                        <li>When plants are fully grown, use the <strong>basket</strong> to harvest them.</li>
-                        <li>Press <strong>E</strong> on the bed to go to sleep.</li>
-                    </ul>
+
+                    <div class="featured-related">
+                        <h4>Related UE5 Work</h4>
+                        <div class="mini-demos">
+                            <a href="#demo-multiplayer" class="mini-demo-link">Multiplayer Demo ↓</a>
+                            <a href="#demo-ai" class="mini-demo-link">AI Behaviour ↓</a>
+                            <a href="#demo-blackboard" class="mini-demo-link">Blackboard AI ↓</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <iframe src="game2/index.html" width="100%" height="675" frameborder="0"></iframe>
+        </section>
 
-            <div class="video-plain" id="blackboard">
-                <div class="video-section-title">Unreal Engine 5: Multiplayer (Client & Server) <p>Followed Udemy Course</p></div>
-                <video controls>
-                    <source src="videos/multiplayer.mp4" type="video/mp4">
-                </video>
+        <section id="projects" class="section projects">
+            <div class="section-header">
+                <span class="section-label">Portfolio</span>
+                <h2>Projects &amp; Demos</h2>
             </div>
 
-            <div class="video-plain" id="blackboard">
-                <div class="video-section-title">Unreal Engine 5 :AI Behaviour <p>Followed Udemy Course</p></div>
-                <video controls>
-                    <source src="videos/aibehaviour.mp4" type="video/mp4">
-                </video>
-            </div>
+            <article class="project-card" id="farmsimulator">
+                <div class="project-header">
+                    <div>
+                        <h3>Farming Simulator</h3>
+                        <p class="project-meta">Unity · Udemy Tutorial</p>
+                    </div>
+                    <span class="tag tag-playable">Playable in Browser</span>
+                </div>
 
-            <div class="video-plain" id="blackboard">
-                <div class="video-section-title">Blackboard AI Logic & Map Generation </div>
-                <video controls>
-                    <source src="videos/blackboard.mp4" type="video/mp4">
-                </video>
-            </div>
+                <div class="how-to-play">
+                    <div class="how-to-play-col">
+                        <h4>How to Play</h4>
+                        <ul>
+                            <li><strong>WASD</strong> or arrow keys to move</li>
+                            <li>Mouse to select grid, <strong>left-click</strong> to dig</li>
+                            <li><strong>I</strong> to open inventory</li>
+                            <li><strong>1–4</strong> to select inventory items</li>
+                        </ul>
+                    </div>
+                    <div class="how-to-play-col">
+                        <h4>Gameplay Loop</h4>
+                        <ul>
+                            <li>Dig → Water or Plant → Sleep for next day</li>
+                            <li>Plants grow one stage per day</li>
+                            <li>Harvest with the <strong>basket</strong> when fully grown</li>
+                            <li>Press <strong>E</strong> on the bed to sleep</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="video-plain" id="genetic">
-                <div class="video-section-title">Map Generation: Genetic Algorithm<p>Followed YouTube Tutorial</p></div>
-                <video controls>
-                    <source src="videos/genetic.mp4" type="video/mp4">
-                </video>
-            </div>
-   
-            <h3 id="pixelgame">Pixel Game - Command Design Pattern</h3>
-            <div class="video-grid">
-                <div class="video-card">
-                    <h3>Player Movement</h3>
-                    <video controls width="100%">
-                        <source src="videos/playermovement.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                <div class="game-embed">
+                    <iframe src="game2/index.html" title="Farming Simulator" loading="lazy"></iframe>
+                </div>
+            </article>
+
+            <div class="demo-grid">
+                <article class="demo-card" id="demo-multiplayer">
+                    <h3>Multiplayer (Client &amp; Server)</h3>
+                    <p class="project-meta">Unreal Engine 5 · Udemy Course</p>
+                    <video controls preload="metadata" poster="">
+                        <source src="videos/multiplayer.mp4" type="video/mp4">
                     </video>
-                </div>
-                <div class="video-card">
-                    <h3>Player Interaction</h3>
-                    <video controls width="100%">
-                        <source src="videos/interaction.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                </article>
+
+                <article class="demo-card" id="demo-ai">
+                    <h3>AI Behaviour</h3>
+                    <p class="project-meta">Unreal Engine 5 · Udemy Course</p>
+                    <video controls preload="metadata">
+                        <source src="videos/aibehaviour.mp4" type="video/mp4">
                     </video>
-                </div>
-                <div class="video-card">
-                    <h3>Player Debuffs</h3>
-                    <video controls width="100%">
-                        <source src="videos/debuff.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                </article>
+
+                <article class="demo-card" id="demo-blackboard">
+                    <h3>Blackboard AI &amp; Map Generation</h3>
+                    <p class="project-meta">Unreal Engine 5</p>
+                    <video controls preload="metadata">
+                        <source src="videos/blackboard.mp4" type="video/mp4">
                     </video>
-                </div>
-                <div class="video-card">
-                    <h3>Turn-based Combat (In Development)</h3>
-                    <video controls width="100%">
-                        <source src="videos/combat.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                </article>
+
+                <article class="demo-card" id="genetic">
+                    <h3>Genetic Algorithm Map Gen</h3>
+                    <p class="project-meta">YouTube Tutorial</p>
+                    <video controls preload="metadata">
+                        <source src="videos/genetic.mp4" type="video/mp4">
                     </video>
-                </div>
+                </article>
             </div>
 
-            <section id="github-projects">
-                <h2 id="projects">Projects</h2>
-                <h2 id="gitprojects">Featured GitHub Projects</h2>
-
-                <div class="repos-wrapper">
-                    <div id="repos" style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));"></div>  
-                </div>
-            </section>
-
-            <div id="education-section">
-            <h2 id="education">Education</h2>
-            <div class="education-entry">
-                <div class="edu-top">
-                <div class="edu-left">
-                    <h3>Queen Mary University</h3>
-                    <p class="degree-title">MSc – Computer Games</p>
-                </div>
-                <div class="edu-right">
-                    <p class="edu-date">2022–2023</p>
-                    <p class="edu-result">Achieved Merit</p>
-                </div>
-                </div>
-            </div>
-
-            <div class="education-entry">
-                <div class="edu-top">
-                <div class="edu-left">
-                    <h3>University of Kent</h3>
-                    <p class="degree-title">BSc – Computer Science</p>
-                </div>
-                <div class="edu-right">
-                    <p class="edu-date">2019–2022</p>
-                    <p class="edu-result">1st Class Honours</p>
-                </div>
-                </div>
-            </div>
-
-            <div class="education-entry">
-                <div class="edu-top">
-                <div class="edu-left">
-                    <h3>Hammersmith & Fulham College</h3>
-                    <p class="degree-title">Access to HE – Computing</p>
-                </div>
-                <div class="edu-right">
-                    <p class="edu-date">2018–2019</p>
-                    <p class="edu-result">Distinction</p>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <h2 id="work">Employment</h2>
-            <div class="work-entry">
-                <div class="work-top">
-                    <div class="work-left">
-                        <h3>Forward Trust Charity</h3>
-                        <p class="job-title">IT Support</p>
-                    </div>
-                    <div class="work-right">
-                        <p class="work-date">2025–Present</p>
-                        <p class="work-location">London, UK</p>
+            <article class="project-card" id="pixelgame">
+                <div class="project-header">
+                    <div>
+                        <h3>Pixel Game — Command Design Pattern</h3>
+                        <p class="project-meta">C# · Design Patterns</p>
                     </div>
                 </div>
-                <ul class="work-responsibilities">
-                    <li>Delivered 1st line face-to-face and remote support for Office 365, Windows 10, and Microsoft.</li>
-                    <li>Troubleshot hardware issues, performed diagnostics, and replaced components as needed.</li>
-                    <li>Liaised with vendors and internal staff to resolve technical problems efficiently.</li>
-                    <li>Built strong, trust-based relationships with Forward Trust team members.</li>
-                </ul>
-            </div>
 
-            <div class="work-entry">
-                <div class="work-top">
-                    <div class="work-left">
-                        <h3>CRG Homecare</h3>
-                        <p class="job-title">Arbitration Officer & IT Support</p>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <h4>Player Movement</h4>
+                        <video controls preload="metadata">
+                            <source src="videos/playermovement.mp4" type="video/mp4">
+                        </video>
                     </div>
-                    <div class="work-right">
-                        <p class="work-date">2017–2019</p>
-                        <p class="work-location">Hammersmith & Fulham</p>
+                    <div class="video-card">
+                        <h4>Player Interaction</h4>
+                        <video controls preload="metadata">
+                            <source src="videos/interaction.mp4" type="video/mp4">
+                        </video>
                     </div>
-                </div>
-                <ul class="work-responsibilities">
-                    <li>Performed daily payment checks via Provider Manager, amending records when needed.</li>
-                    <li>Processed ~6000 payment records/month with 100% accuracy.</li>
-                    <li>Resolved technical issues including phones, login support, and client queries.</li>
-                    <li>Monitored EziTracker data against local authority contracts using Care Monitoring tools.</li>
-                </ul>
-            </div>
-
-            <h2 id="certifications">Certifications & Extracurricular</h2>
-            <div class="grid-container">
-                <!-- <div class="cert-limitbreak-wrapper">
-                    <div class="grid-item">
-                        <h3><strong>Udemy</strong></h3>
-                        Microsoft Power BI Data Analyst<br>
-                        <i id="progress">*In Progress*</i>
+                    <div class="video-card">
+                        <h4>Player Debuffs</h4>
+                        <video controls preload="metadata">
+                            <source src="videos/debuff.mp4" type="video/mp4">
+                        </video>
                     </div>
-                </div> -->
-                <div class="cert-limitbreak-wrapper">
-                    <div class="grid-item">
-                        <h3><strong>LimitBreak Mentee</strong></h3>
-                        Unreal Engine 5<br>
-                        <i id="progress">Completed 2024</i>
+                    <div class="video-card">
+                        <h4>Turn-based Combat</h4>
+                        <p class="project-meta">In Development</p>
+                        <video controls preload="metadata">
+                            <source src="videos/combat.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
+            </article>
+
+            <div class="github-section" id="github-projects">
+                <h3>GitHub Repositories</h3>
+                <div id="repos" class="repos-grid"></div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills">
+            <div class="section-header">
+                <span class="section-label">Expertise</span>
+                <h2>Skills</h2>
             </div>
 
-            <div class="cert-center-wrapper">
-                <embed src="certifications/problem_solving_basic.pdf" type="application/pdf" width="700px" height="575px" />
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-icon">⚔</span>
+                    <h3>Game Development</h3>
+                    <p>Unreal Engine 5, Unity, gameplay programming, AI behaviour, multiplayer networking</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">{ }</span>
+                    <h3>Languages</h3>
+                    <p>C++, C#, Java — systems programming and gameplay code</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">◎</span>
+                    <h3>Networking</h3>
+                    <p>TCP/UDP, client–server architecture, port forwarding, Raspberry Pi game servers</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">▣</span>
+                    <h3>Tools &amp; OS</h3>
+                    <p>Linux (Ubuntu, Pop!_OS), QEMU, command-line, Git</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">◈</span>
+                    <h3>Data &amp; Web</h3>
+                    <p>MySQL, PostgreSQL, Power BI, HTML/CSS/JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">✦</span>
+                    <h3>Design Patterns</h3>
+                    <p>Command pattern, blackboard AI, genetic algorithms, component architecture</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="section-header">
+                <span class="section-label">Background</span>
+                <h2>About Me</h2>
             </div>
 
-            <!-- <div class="cert-center-wrapper">
-                <embed src="certifications/ue5.pdf" type="application/pdf" width="700px" height="575px" />
-            </div> -->
+            <div class="about-grid">
+                <div class="about-block">
+                    <h3>Education</h3>
 
-            
+                    <div class="timeline-entry">
+                        <div class="timeline-top">
+                            <div>
+                                <h4>Queen Mary University</h4>
+                                <p class="timeline-subtitle">MSc – Computer Games</p>
+                            </div>
+                            <div class="timeline-meta">
+                                <span>2022–2023</span>
+                                <span class="timeline-result">Merit</span>
+                            </div>
+                        </div>
+                    </div>
 
-           
+                    <div class="timeline-entry">
+                        <div class="timeline-top">
+                            <div>
+                                <h4>University of Kent</h4>
+                                <p class="timeline-subtitle">BSc – Computer Science</p>
+                            </div>
+                            <div class="timeline-meta">
+                                <span>2019–2022</span>
+                                <span class="timeline-result">1st Class Honours</span>
+                            </div>
+                        </div>
+                    </div>
 
-            
-            <!-- <div class="code-entry">
-                <div class="code-top">
-                    <div class="code-left">
-                        <h3>Command Pattern Base Class</h3>
+                    <div class="timeline-entry">
+                        <div class="timeline-top">
+                            <div>
+                                <h4>Hammersmith &amp; Fulham College</h4>
+                                <p class="timeline-subtitle">Access to HE – Computing</p>
+                            </div>
+                            <div class="timeline-meta">
+                                <span>2018–2019</span>
+                                <span class="timeline-result">Distinction</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <img src="screenshots/command0.png" alt="Command Base Class Screenshot" class="code-image">
-            </div>
 
-            <div class="code-entry">
-                <div class="code-top">
-                    <div class="code-left">
-                        <h3>Move Command Implementation</h3>
+                <div class="about-block">
+                    <h3>Experience</h3>
+
+                    <div class="timeline-entry">
+                        <div class="timeline-top">
+                            <div>
+                                <h4>Forward Trust Charity</h4>
+                                <p class="timeline-subtitle">IT Support</p>
+                            </div>
+                            <div class="timeline-meta">
+                                <span>2025–Present</span>
+                                <span>London, UK</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-details">
+                            <li>1st line support for Office 365, Windows 10, and Microsoft products</li>
+                            <li>Hardware diagnostics, component replacement, vendor liaison</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry">
+                        <div class="timeline-top">
+                            <div>
+                                <h4>CRG Homecare</h4>
+                                <p class="timeline-subtitle">Arbitration Officer &amp; IT Support</p>
+                            </div>
+                            <div class="timeline-meta">
+                                <span>2017–2019</span>
+                                <span>Hammersmith &amp; Fulham</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-details">
+                            <li>Processed ~6,000 payment records/month with 100% accuracy</li>
+                            <li>Technical support for phones, logins, and client queries</li>
+                        </ul>
                     </div>
                 </div>
-                <img src="screenshots/command1.png" alt="Move Command Screenshot" class="code-image">
-            </div>
 
-            <div class="code-entry">
-                <div class="code-top">
-                    <div class="code-left">
-                        <h3>Player Input Handling</h3>
+                <div class="about-block about-block-full">
+                    <h3>Certifications</h3>
+                    <div class="cert-grid">
+                        <div class="cert-card">
+                            <h4>LimitBreak Mentee</h4>
+                            <p>Unreal Engine 5</p>
+                            <span class="cert-date">Completed 2024</span>
+                        </div>
+                        <div class="cert-card cert-card-pdf">
+                            <h4>HackerRank</h4>
+                            <p>Problem Solving (Basic)</p>
+                            <a href="certifications/problem_solving_basic.pdf" target="_blank" rel="noopener" class="cert-link">View Certificate →</a>
+                        </div>
                     </div>
                 </div>
-                <img src="screenshots/command2.png" alt="Player Input Screenshot" class="code-image">
-            </div> -->
-
-            
-
-            
-        <!-- </section> -->
-
-        <h2 id="contact">Contact</h2>
-            <div id="contact-info">
-                <div class="contact-item"><p>seansanii@outlook.com</p></div>
-                <div class="contact-item"><p>+44 7305 774094</p></div>
-                <div class="contact-item"><p>London, UK</p></div>
             </div>
-        <script>
-            loadGitHubProjects(); 
-        </script>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="section-header">
+                <span class="section-label">Let's Connect</span>
+                <h2>Contact</h2>
+                <p class="section-desc">Open to game dev roles, collaborations, and portfolio feedback.</p>
+            </div>
+
+            <div class="contact-grid">
+                <a href="mailto:seansanii@outlook.com" class="contact-card">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">seansanii@outlook.com</span>
+                </a>
+                <a href="tel:+447305774094" class="contact-card">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">+44 7305 774094</span>
+                </a>
+                <div class="contact-card">
+                    <span class="contact-label">Location</span>
+                    <span class="contact-value">London, UK</span>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer>
-        <p>&copy; 2025 My Website</p>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Sean Sanii · Game Developer</p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
