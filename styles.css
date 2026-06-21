@@ -618,7 +618,7 @@ main {
 
 .repos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
@@ -784,6 +784,53 @@ main {
     margin-bottom: 4px;
 }
 
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.education-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+}
+
+.education-row:last-child {
+    border-bottom: none;
+}
+
+.education-main h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.education-main p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 2px 0 0;
+    text-align: left;
+}
+
+.education-meta {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -898,6 +945,10 @@ a.contact-card:hover .contact-value {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+
+    .repos-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -953,6 +1004,17 @@ a.contact-card:hover .contact-value {
 
     .game-embed iframe {
         height: 450px;
+    }
+
+    .education-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .education-meta {
+        text-align: left;
+        flex-direction: row;
+        gap: 12px;
     }
 }
 

@@ -8,20 +8,24 @@ function toggleMenu() {
 function loadGitHubProjects() {
     const username = 'Sean-Sanii-Nejad';
     const selectedRepos = [
+        'Aura_AbilityGameplaySystem',
         'BoardAITestEnv',
-        'OpenGL-rendering',
-        'AGD_MiniGame',
-        'Genetic-Algorithm',
-        'Crytography-Assignment',
-        'hackerrank-3-months-preparation-kit'
+        'AGD_MiniGame'
     ];
     const container = document.getElementById('repos');
     if (!container) return;
 
     selectedRepos.forEach(repoName => {
         fetch(`https://api.github.com/repos/${username}/${repoName}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Repo not found: ${repoName}`);
+                }
+                return response.json();
+            })
             .then(repo => {
+                if (!repo.name) return;
+
                 const card = document.createElement('article');
                 card.className = 'repo-card';
 
