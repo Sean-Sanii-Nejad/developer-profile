@@ -816,7 +816,15 @@ UAbilitySystemComponent* ATopDownPaperCharacter::<span class="code-fn">GetAbilit
         <div class="image-lightbox-backdrop" data-lightbox-close></div>
         <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
             <button type="button" class="image-lightbox-close" aria-label="Close expanded image" data-lightbox-close>&times;</button>
-            <img class="image-lightbox-img" src="" alt="">
+            <div class="image-lightbox-toolbar">
+                <button type="button" class="image-lightbox-zoom-btn" data-lightbox-zoom-out aria-label="Zoom out">−</button>
+                <span class="image-lightbox-zoom-level" data-lightbox-zoom-level>150%</span>
+                <button type="button" class="image-lightbox-zoom-btn" data-lightbox-zoom-in aria-label="Zoom in">+</button>
+                <span class="image-lightbox-zoom-hint">Scroll to pan · +/− to zoom</span>
+            </div>
+            <div class="image-lightbox-viewport">
+                <img class="image-lightbox-img" src="" alt="">
+            </div>
             <p id="lightbox-caption" class="image-lightbox-caption"></p>
         </div>
     </div>
