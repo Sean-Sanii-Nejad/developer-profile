@@ -387,6 +387,34 @@ main {
     background: #000;
 }
 
+.featured-video-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.featured-video-item {
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.featured-video-item:last-child {
+    border-bottom: none;
+}
+
+.featured-video-label {
+    display: block;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
 .featured-video {
     width: 100%;
     display: block;
