@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
-  <rect width="960" height="540" fill="#141c2b"/>
-  <rect x="1" y="1" width="958" height="538" fill="none" stroke="#c89b3c" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="8 6"/>
-  <text x="480" y="250" fill="#e8e6e3" font-family="sans-serif" font-size="22" text-anchor="middle">Behavior Tree</text>
-  <text x="480" y="285" fill="#9aa5b8" font-family="sans-serif" font-size="15" text-anchor="middle">Enemy AI combat loop</text>
-  <text x="480" y="320" fill="#6b7a90" font-family="sans-serif" font-size="13" text-anchor="middle">Replace with behavior-tree.png</text>
-</svg>
