@@ -1269,12 +1269,6 @@ a.contact-card:hover .contact-value {
     font-family: ui-monospace, monospace;
 }
 
-.image-lightbox-zoom-hint {
-    margin-left: auto;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-}
-
 .image-lightbox-viewport {
     overflow: auto;
     flex: 1;
