@@ -161,8 +161,11 @@
                     </ul>
                     <div class="tech-split">
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/player-controller.png" alt="BP_PlayerController right-click input graph" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_PlayerController input routing">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/player-controller.png" alt="BP_PlayerController right-click input graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>BP_PlayerController – input routing</figcaption>
                         </figure>
                         <div class="tech-code">
@@ -201,8 +204,11 @@
                     </ul>
                     <div class="tech-split">
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/projectile-gas.png" alt="BP_Projectile GAS damage graph" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Projectile GAS damage on hit">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/projectile-gas.png" alt="BP_Projectile GAS damage graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>BP_Projectile – GAS damage on hit</figcaption>
                         </figure>
                         <div class="tech-code">
@@ -246,8 +252,11 @@
                     </ul>
                     <div class="tech-split">
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/flash-ability.png" alt="BP_Flash cursor targeting graph" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Flash cursor targeting and dash">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/flash-ability.png" alt="BP_Flash cursor targeting graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>BP_Flash – cursor targeting &amp; dash</figcaption>
                         </figure>
                         <div class="tech-code">
@@ -286,8 +295,11 @@
                     </ul>
                     <div class="tech-split">
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/auto-attack.png" alt="BP_AutoAttack projectile spawn graph" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_AutoAttack homing projectile spawn">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/auto-attack.png" alt="BP_AutoAttack projectile spawn graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>BP_AutoAttack – homing projectile spawn</figcaption>
                         </figure>
                         <div class="tech-code">
@@ -326,13 +338,19 @@
                     </ul>
                     <div class="tech-split tech-split-stacked">
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/behavior-tree.png" alt="Enemy AI behavior tree" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: Behavior Tree find cooldown shoot">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/behavior-tree.png" alt="Enemy AI behavior tree" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>Behavior Tree – find, cooldown, shoot</figcaption>
                         </figure>
                         <figure class="tech-visual">
-                            <span class="tech-visual-badge">Blueprint</span>
-                            <img src="screenshots/moba/ai-targeting.png" alt="BTS_FindPlayerInRange service graph" loading="lazy">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BTS_FindPlayerInRange nearest player search">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/ai-targeting.png" alt="BTS_FindPlayerInRange service graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
                             <figcaption>BTS_FindPlayerInRange – nearest player search</figcaption>
                         </figure>
                         <div class="tech-code tech-code-wide">
@@ -765,6 +783,15 @@ UAbilitySystemComponent* ATopDownPaperCharacter::<span class="code-fn">GetAbilit
     <footer class="site-footer">
         <p>&copy; 2025 Sean Sanii · Game Developer</p>
     </footer>
+
+    <div id="image-lightbox" class="image-lightbox" hidden aria-hidden="true">
+        <div class="image-lightbox-backdrop" data-lightbox-close></div>
+        <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+            <button type="button" class="image-lightbox-close" aria-label="Close expanded image" data-lightbox-close>&times;</button>
+            <img class="image-lightbox-img" src="" alt="">
+            <p id="lightbox-caption" class="image-lightbox-caption"></p>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>

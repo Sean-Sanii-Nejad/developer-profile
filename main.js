@@ -90,3 +90,61 @@ function initTechTabs() {
 }
 
 initTechTabs();
+
+function initImageLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = lightbox?.querySelector('.image-lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const triggers = document.querySelectorAll('.tech-visual-expand');
+
+    if (!lightbox || !lightboxImg || !lightboxCaption || !triggers.length) return;
+
+    let lastFocusedElement = null;
+
+    function closeLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+            lastFocusedElement = null;
+        }
+    }
+
+    function openLightbox(trigger) {
+        const img = trigger.querySelector('img');
+        const caption = trigger.closest('.tech-visual')?.querySelector('figcaption')?.textContent?.trim();
+
+        if (!img) return;
+
+        lastFocusedElement = trigger;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = caption || img.alt;
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        lightbox.querySelector('.image-lightbox-close')?.focus();
+    }
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => openLightbox(trigger));
+    });
+
+    lightbox.querySelectorAll('[data-lightbox-close]').forEach(el => {
+        el.addEventListener('click', closeLightbox);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (lightbox.hidden) return;
+
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+}
+
+initImageLightbox();
