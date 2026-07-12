@@ -21,6 +21,7 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#featured">Flagship</a></li>
+                <li><a href="#technical">Technical</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#about">About</a></li>
@@ -101,14 +102,326 @@
                     </ul>
 
                     <div class="featured-related">
-                        <h4>Related UE5 Work</h4>
+                        <h4>Explore This Project</h4>
                         <div class="mini-demos">
+                            <a href="#technical" class="mini-demo-link">Technical Breakdown ↓</a>
                             <a href="#demo-multiplayer" class="mini-demo-link">Multiplayer Demo ↓</a>
                             <a href="#demo-ai" class="mini-demo-link">AI Behaviour ↓</a>
-                            <a href="#demo-blackboard" class="mini-demo-link">Blackboard AI ↓</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="technical" class="section technical">
+            <div class="section-header">
+                <span class="section-label">Under the Hood</span>
+                <h2>Technical Breakdown</h2>
+                <p class="section-desc">
+                    Hybrid C++ and Blueprint architecture for a top-down MOBA prototype.
+                    Core systems live in C++ for replication and performance; abilities and combat flow are built in Blueprint with GAS.
+                </p>
+            </div>
+
+            <div class="tech-overview">
+                <div class="tech-overview-item">
+                    <span class="tech-overview-label">C++</span>
+                    <p>Player controller, GAS setup, attributes, AI shooting, projectile helpers, 8-way animation</p>
+                </div>
+                <div class="tech-overview-item">
+                    <span class="tech-overview-label">Blueprint</span>
+                    <p>Flash ability, auto attack, projectile hit logic, behavior tree AI, UI widgets</p>
+                </div>
+                <div class="tech-overview-item">
+                    <span class="tech-overview-label">GAS</span>
+                    <p>Health, mana, attack damage, gameplay effects, ability granting on PlayerState</p>
+                </div>
+            </div>
+
+            <div class="tech-tabs" role="tablist" aria-label="Technical systems">
+                <button class="tech-tab active" role="tab" aria-selected="true" aria-controls="tech-panel-input" data-panel="tech-panel-input">Player Input</button>
+                <button class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel-gas" data-panel="tech-panel-gas">GAS</button>
+                <button class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel-flash" data-panel="tech-panel-flash">Flash</button>
+                <button class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel-combat" data-panel="tech-panel-combat">Combat</button>
+                <button class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel-ai" data-panel="tech-panel-ai">Enemy AI</button>
+                <button class="tech-tab" role="tab" aria-selected="false" aria-controls="tech-panel-character" data-panel="tech-panel-character">Character</button>
+            </div>
+
+            <div class="tech-panels">
+                <article class="tech-panel active" id="tech-panel-input" role="tabpanel">
+                    <header class="tech-panel-header">
+                        <h3>Click-to-Move &amp; Click-to-Attack</h3>
+                        <p>MOBA-style input: click ground to move, click enemies to auto attack. Movement is replicated to the server.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>Raycast under cursor to distinguish enemies from ground using gameplay tags</li>
+                        <li>Enemy clicks activate <code>BP_AutoAttack</code> through GAS</li>
+                        <li>Ground clicks spawn click VFX and request nav mesh movement</li>
+                        <li>C++ handles local HUD, camera setup, and server-authoritative movement RPC</li>
+                    </ul>
+                    <div class="tech-split">
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/player-controller.svg" alt="BP_PlayerController right-click input graph" loading="lazy" data-fallback="screenshots/moba/player-controller.svg">
+                            <figcaption>BP_PlayerController – input routing</figcaption>
+                        </figure>
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">MyPlayerController.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> AMyPlayerController::<span class="code-fn">RequestMoveToLocation</span>(<span class="code-kw">const</span> FVector&amp; WorldLocation)
+{
+    <span class="code-kw">if</span> (!IsLocalController()) <span class="code-kw">return</span>;
+
+    OnMoveRequested(WorldLocation);
+    UAIBlueprintHelperLibrary::<span class="code-fn">SimpleMoveToLocation</span>(<span class="code-kw">this</span>, WorldLocation);
+    <span class="code-fn">ServerMoveToLocation</span>(WorldLocation);
+}
+
+<span class="code-kw">void</span> AMyPlayerController::<span class="code-fn">ServerMoveToLocation_Implementation</span>(
+    <span class="code-kw">const</span> FVector&amp; WorldLocation)
+{
+    UAIBlueprintHelperLibrary::<span class="code-fn">SimpleMoveToLocation</span>(<span class="code-kw">this</span>, WorldLocation);
+}</code></pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tech-panel" id="tech-panel-gas" role="tabpanel" hidden>
+                    <header class="tech-panel-header">
+                        <h3>Gameplay Ability System Architecture</h3>
+                        <p>GAS lives on PlayerState for multiplayer-safe ability ownership. Attributes replicate and clamp on change.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>PlayerState owns the ASC and grants Auto Attack + Flash at startup</li>
+                        <li>Health, mana, regen, and attack damage defined in a custom AttributeSet</li>
+                        <li>HybridGasBlueprintLibrary bridges Blueprint projectiles to C++ GAS helpers</li>
+                        <li>Projectiles apply <code>GE_Damage</code> through outgoing effect specs</li>
+                    </ul>
+                    <div class="tech-split">
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/projectile-gas.svg" alt="BP_Projectile GAS damage graph" loading="lazy">
+                            <figcaption>BP_Projectile – GAS damage on hit</figcaption>
+                        </figure>
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">MyPlayerState.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> AMyPlayerState::<span class="code-fn">InitializeGAS</span>(APawn* AvatarActor)
+{
+    AbilitySystemComponent-&gt;<span class="code-fn">InitAbilityActorInfo</span>(<span class="code-kw">this</span>, AvatarActor);
+
+    <span class="code-kw">if</span> (!HasAuthority()) <span class="code-kw">return</span>;
+
+    <span class="code-kw">if</span> (!bDefaultAttributesApplied)
+        <span class="code-fn">ApplyStartupGameplayEffects</span>();
+
+    <span class="code-kw">if</span> (!bStartupAbilitiesGranted)
+        <span class="code-fn">GrantStartupAbilities</span>();
+}
+
+<span class="code-kw">void</span> UMyAttributeSet::<span class="code-fn">PostGameplayEffectExecute</span>(
+    <span class="code-kw">const</span> FGameplayEffectModCallbackData&amp; Data)
+{
+    <span class="code-kw">if</span> (Data.EvaluatedData.Attribute == <span class="code-fn">GetHealthAttribute</span>())
+        <span class="code-fn">SetHealth</span>(FMath::<span class="code-fn">Clamp</span>(GetHealth(), 0.f, GetMaxHealth()));
+}</code></pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tech-panel" id="tech-panel-flash" role="tabpanel" hidden>
+                    <header class="tech-panel-header">
+                        <h3>Flash Ability – Cursor-Targeted Dash</h3>
+                        <p>Signature mobility ability built as a GAS gameplay ability with mouse-to-world targeting.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>Traces mouse cursor to world position on the horizontal plane</li>
+                        <li>Calculates dash direction and clamps range to 400 units</li>
+                        <li>Teleports character, stops movement, and plays VFX/audio on commit</li>
+                        <li>Granted at startup from PlayerState alongside Auto Attack</li>
+                    </ul>
+                    <div class="tech-split">
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/flash-ability.svg" alt="BP_Flash cursor targeting graph" loading="lazy">
+                            <figcaption>BP_Flash – cursor targeting &amp; dash</figcaption>
+                        </figure>
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">MyPlayerState.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> AMyPlayerState::<span class="code-fn">GrantStartupAbilities</span>()
+{
+    <span class="code-kw">for</span> (<span class="code-kw">const</span> TSubclassOf&lt;UGameplayAbility&gt;&amp; AbilityClass : StartupAbilities)
+    {
+        <span class="code-kw">if</span> (AbilityClass)
+        {
+            AbilitySystemComponent-&gt;<span class="code-fn">GiveAbility</span>(
+                FGameplayAbilitySpec(AbilityClass, 1, INDEX_NONE, <span class="code-kw">this</span>));
+        }
+    }
+    bStartupAbilitiesGranted = <span class="code-kw">true</span>;
+}
+
+<span class="code-comment">// StartupAbilities: BP_AutoAttack, BP_Flash</span></code></pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tech-panel" id="tech-panel-combat" role="tabpanel" hidden>
+                    <header class="tech-panel-header">
+                        <h3>Auto Attack &amp; Homing Projectiles</h3>
+                        <p>Ranged combat with movement lock, sprite facing, homing projectiles, and GAS damage application.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>Auto attack stops movement and faces the target before firing</li>
+                        <li>Homing projectile spawned with speed 1200 toward the enemy</li>
+                        <li>C++ helper configures homing target, speed, and initial velocity after spawn</li>
+                        <li>On hit, projectile applies damage through the Hybrid GAS library</li>
+                    </ul>
+                    <div class="tech-split">
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/auto-attack.svg" alt="BP_AutoAttack projectile spawn graph" loading="lazy">
+                            <figcaption>BP_AutoAttack – homing projectile spawn</figcaption>
+                        </figure>
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">HybridGasBlueprintLibrary.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> UHybridGasBlueprintLibrary::<span class="code-fn">InitializeProjectileHoming</span>(
+    AActor* Projectile, AActor* HomingTarget, <span class="code-type">float</span> Speed, <span class="code-type">bool</span> bUseHoming)
+{
+    <span class="code-fn">SetActorObjectProperty</span>(Projectile, <span class="code-str">"HomingTarget"</span>, HomingTarget);
+    <span class="code-fn">SetActorBoolProperty</span>(Projectile, <span class="code-str">"UseHoming"</span>, bUseHoming);
+    <span class="code-fn">SetActorFloatProperty</span>(Projectile, <span class="code-str">"HomingSpeed"</span>, Speed);
+
+    <span class="code-kw">const</span> FVector Direction =
+        (HomingTarget-&gt;<span class="code-fn">GetActorLocation</span>() - Projectile-&gt;<span class="code-fn">GetActorLocation</span>())
+        .<span class="code-fn">GetSafeNormal</span>();
+
+    <span class="code-kw">if</span> (<span class="code-kw">auto</span>* Move = Projectile-&gt;<span class="code-fn">FindComponentByClass</span>&lt;UProjectileMovementComponent&gt;())
+        Move-&gt;Velocity = Direction * Speed;
+}</code></pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tech-panel" id="tech-panel-ai" role="tabpanel" hidden>
+                    <header class="tech-panel-header">
+                        <h3>Enemy AI – Behavior Tree Combat</h3>
+                        <p>Modular AI using services, decorators, and tasks. C++ handles the actual projectile spawn.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>Service scans for nearest player within attack range and updates the blackboard</li>
+                        <li>Cooldown decorator prevents attack spam every 2 seconds</li>
+                        <li>Behavior task triggers shoot logic on the NPC unit</li>
+                        <li>C++ <code>ShootAtTarget</code> spawns and configures homing projectiles on the server</li>
+                    </ul>
+                    <div class="tech-split tech-split-stacked">
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/behavior-tree.svg" alt="Enemy AI behavior tree" loading="lazy">
+                            <figcaption>Behavior Tree – find, cooldown, shoot</figcaption>
+                        </figure>
+                        <figure class="tech-visual">
+                            <span class="tech-visual-badge">Blueprint</span>
+                            <img src="screenshots/moba/ai-targeting.svg" alt="BTS_FindPlayerInRange service graph" loading="lazy">
+                            <figcaption>BTS_FindPlayerInRange – nearest player search</figcaption>
+                        </figure>
+                        <div class="tech-code tech-code-wide">
+                            <div class="code-header">
+                                <span class="code-filename">NPCUnit.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> ANPCUnit::<span class="code-fn">ShootAtTarget</span>(AActor* Target)
+{
+    <span class="code-kw">if</span> (!HasAuthority() || !Target || !ProjectileClass) <span class="code-kw">return</span>;
+
+    <span class="code-kw">const</span> FVector Direction =
+        (Target-&gt;<span class="code-fn">GetActorLocation</span>() - GetActorLocation()).<span class="code-fn">GetSafeNormal</span>();
+
+    AActor* Projectile = GetWorld()-&gt;<span class="code-fn">SpawnActor</span>&lt;AActor&gt;(
+        ProjectileClass, GetActorLocation(), Direction.<span class="code-fn">Rotation</span>(), SpawnParams);
+
+    UHybridGasBlueprintLibrary::<span class="code-fn">InitializeProjectileHoming</span>(
+        Projectile, Target, ProjectileSpeed);
+}</code></pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tech-panel" id="tech-panel-character" role="tabpanel" hidden>
+                    <header class="tech-panel-header">
+                        <h3>Character Animation &amp; Combat Facing</h3>
+                        <p>Paper2D character with replicated 8-direction idle/walk animation and attack-facing lock.</p>
+                    </header>
+                    <ul class="tech-bullets">
+                        <li>Velocity mapped to 8 compass directions for idle and walk flipbooks</li>
+                        <li>Sprite facing locks toward target during ranged attacks</li>
+                        <li>Movement and direction replicate for multiplayer consistency</li>
+                        <li>ASC retrieved from PlayerState following standard GAS multiplayer pattern</li>
+                    </ul>
+                    <div class="tech-split tech-split-code-only">
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">TopDownPaperCharacter.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> ATopDownPaperCharacter::<span class="code-fn">PrepareForRangedAttack</span>(
+    <span class="code-kw">const</span> FVector&amp; TargetWorldLocation)
+{
+    bLockSpriteFacing = <span class="code-kw">true</span>;
+    bIsMoving = <span class="code-kw">false</span>;
+    GetCharacterMovement()-&gt;<span class="code-fn">StopMovementImmediately</span>();
+
+    FVector AimDirection = TargetWorldLocation - GetActorLocation();
+    AimDirection.Z = 0.f;
+
+    <span class="code-kw">if</span> (!AimDirection.<span class="code-fn">IsNearlyZero</span>())
+        DirectionIndex = <span class="code-kw">static_cast</span>&lt;uint8&gt;(<span class="code-fn">DirectionFromVelocity</span>(AimDirection));
+
+    <span class="code-fn">ApplySpriteAnimation</span>();
+}
+
+UAbilitySystemComponent* ATopDownPaperCharacter::<span class="code-fn">GetAbilitySystemComponent</span>() <span class="code-kw">const</span>
+{
+    <span class="code-kw">if</span> (<span class="code-kw">const</span> APlayerState* PS = GetPlayerState())
+        <span class="code-kw">return</span> PS-&gt;<span class="code-fn">FindComponentByClass</span>&lt;UAbilitySystemComponent&gt;();
+    <span class="code-kw">return</span> <span class="code-kw">nullptr</span>;
+}</code></pre>
+                        </div>
+                        <div class="tech-code">
+                            <div class="code-header">
+                                <span class="code-filename">AttackRangeIndicatorComponent.cpp</span>
+                                <span class="code-lang">C++</span>
+                            </div>
+                            <pre><code><span class="code-kw">void</span> UAttackRangeIndicatorComponent::<span class="code-fn">DrawRangeRing</span>() <span class="code-kw">const</span>
+{
+    <span class="code-kw">if</span> (!GetWorld() || Radius &lt;= KINDA_SMALL_NUMBER) <span class="code-kw">return</span>;
+
+    DrawDebugCircle(
+        GetWorld(),
+        GetComponentLocation(),
+        Radius,
+        NumSegments,
+        RingColor.<span class="code-fn">ToFColor</span>(<span class="code-kw">true</span>),
+        <span class="code-kw">false</span>, -1.f, 0, RingWidth,
+        FVector::<span class="code-fn">ForwardVector</span>,
+        FVector::<span class="code-fn">RightVector</span>,
+        <span class="code-kw">false</span>);
+}
+
+<span class="code-comment">// MOBA-style attack range ring under NPC units</span></code></pre>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 

@@ -57,3 +57,36 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 loadGitHubProjects();
+
+function initTechTabs() {
+    const tabs = document.querySelectorAll('.tech-tab');
+    const panels = document.querySelectorAll('.tech-panel');
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const panelId = tab.dataset.panel;
+
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+
+            panels.forEach(panel => {
+                panel.classList.remove('active');
+                panel.hidden = true;
+            });
+
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+
+            const activePanel = document.getElementById(panelId);
+            if (activePanel) {
+                activePanel.classList.add('active');
+                activePanel.hidden = false;
+            }
+        });
+    });
+}
+
+initTechTabs();
