@@ -247,19 +247,36 @@
                     <ul class="tech-bullets">
                         <li>Traces mouse cursor to world position on the horizontal plane</li>
                         <li>Calculates dash direction and clamps range to 400 units</li>
-                        <li>Teleports character, stops movement, and plays VFX/audio on commit</li>
+                        <li>Teleports character, updates rotation, and stops movement on arrival</li>
+                        <li>Plays teleport sound and Niagara VFX on ability commit</li>
                         <li>Granted at startup from PlayerState alongside Auto Attack</li>
                     </ul>
-                    <div class="tech-split">
+                    <div class="tech-split tech-split-stacked">
                         <figure class="tech-visual">
-                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Flash cursor targeting and dash">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Flash cursor targeting">
                                 <span class="tech-visual-badge">Blueprint</span>
                                 <img src="screenshots/moba/flash-ability.png" alt="BP_Flash cursor targeting graph" loading="lazy">
                                 <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
                             </button>
-                            <figcaption>BP_Flash – cursor targeting &amp; dash</figcaption>
+                            <figcaption>BP_Flash – cursor targeting</figcaption>
                         </figure>
-                        <div class="tech-code">
+                        <figure class="tech-visual">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Flash dash execution">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/flash-execution.png" alt="BP_Flash dash execution graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
+                            <figcaption>BP_Flash – dash execution</figcaption>
+                        </figure>
+                        <figure class="tech-visual">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Flash sound and VFX">
+                                <span class="tech-visual-badge">Blueprint</span>
+                                <img src="screenshots/moba/flash-vfx.png" alt="BP_Flash sound and VFX graph" loading="lazy">
+                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                            </button>
+                            <figcaption>BP_Flash – sound &amp; VFX</figcaption>
+                        </figure>
+                        <div class="tech-code tech-code-wide">
                             <div class="code-header">
                                 <span class="code-filename">MyPlayerState.cpp</span>
                                 <span class="code-lang">C++</span>
