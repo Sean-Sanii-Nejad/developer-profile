@@ -1448,10 +1448,6 @@ body.lightbox-open {
         padding-bottom: 18px;
         background: linear-gradient(to top, rgba(8, 12, 20, 0.88), rgba(8, 12, 20, 0.2) 55%, transparent);
     }
-
-    .image-lightbox-zoom-hint {
-        display: none;
-    }
 }
 
 @media (max-width: 768px) {
