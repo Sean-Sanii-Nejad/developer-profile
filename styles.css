@@ -1072,6 +1072,34 @@ a.contact-card:hover .contact-value {
     font-size: 0.85em;
 }
 
+.tech-video {
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+}
+
+.tech-video-label {
+    display: block;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.tech-demo-video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #000;
+}
+
 .tech-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
