@@ -176,16 +176,50 @@
                             <source src="videos/shooting.mp4" type="video/mp4">
                         </video>
                     </div>
-                    <div class="tech-split">
-                        <figure class="tech-visual">
-                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_PlayerController input routing">
+                    <div class="tech-split tech-split-stacked">
+                        <figure class="tech-visual tech-visual-wide">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_PlayerController full Event Graph">
                                 <span class="tech-visual-badge">Blueprint</span>
-                                <img src="screenshots/moba/player-controller.png" alt="BP_PlayerController right-click input graph" loading="lazy">
+                                <img src="screenshots/moba/player-controller.png" alt="BP_PlayerController full Event Graph overview" loading="lazy">
                                 <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
                             </button>
-                            <figcaption>BP_PlayerController – input routing</figcaption>
+                            <figcaption>BP_PlayerController – full Event Graph</figcaption>
                         </figure>
-                        <div class="tech-code">
+                        <div class="tech-visual-grid">
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: right click routing auto attack and movement">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/player-controller-right-click.png" alt="Right click routing to auto attack or movement" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>Right click – routing, auto attack &amp; movement</figcaption>
+                            </figure>
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: spawn camera and player character">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/player-controller-spawn-camera.png" alt="Spawn camera and player character on BeginPlay" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>Spawn camera &amp; player character</figcaption>
+                            </figure>
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: edge scroll and snap to player camera">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/move-camera.png" alt="Edge-scroll and snap-to-player camera logic" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>Edge-scroll &amp; snap-to-player camera</figcaption>
+                            </figure>
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: HUD setup and ability test input">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/player-controller-ui.png" alt="HUD widget setup and ability test key input" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>HUD setup &amp; ability test input</figcaption>
+                            </figure>
+                        </div>
+                        <div class="tech-code tech-code-wide">
                             <div class="code-header">
                                 <span class="code-filename">MyPlayerController.cpp</span>
                                 <span class="code-lang">C++</span>

@@ -1136,6 +1136,21 @@ a.contact-card:hover .contact-value {
     grid-column: 1 / -1;
 }
 
+.tech-visual-wide {
+    grid-column: 1 / -1;
+}
+
+.tech-visual-wide .tech-visual-expand img {
+    max-height: 440px;
+}
+
+.tech-visual-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .tech-split-code-only {
     grid-template-columns: 1fr 1fr;
 }
@@ -1489,6 +1504,10 @@ body.lightbox-open {
 
     .tech-split-stacked .tech-code-wide {
         grid-column: auto;
+    }
+
+    .tech-visual-grid {
+        grid-template-columns: 1fr;
     }
 
     .tech-expand-hint {
