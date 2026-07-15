@@ -106,7 +106,7 @@ function initImageLightbox() {
     const MIN_ZOOM = 1;
     const MAX_ZOOM = 3;
     const ZOOM_STEP = 0.25;
-    const DEFAULT_ZOOM = 1.5;
+    const DEFAULT_ZOOM = 1;
 
     let lastFocusedElement = null;
     let zoomLevel = DEFAULT_ZOOM;
