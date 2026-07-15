@@ -1141,7 +1141,11 @@ a.contact-card:hover .contact-value {
 }
 
 .tech-visual-wide .tech-visual-expand img {
-    max-height: 440px;
+    max-height: none;
+    min-height: 0;
+    height: auto;
+    width: 100%;
+    object-fit: contain;
 }
 
 .tech-visual-grid {
