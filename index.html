@@ -237,21 +237,12 @@
                         <li>HybridGasBlueprintLibrary bridges Blueprint projectiles to C++ GAS helpers</li>
                         <li>Projectiles apply <code>GE_Damage</code> through outgoing effect specs</li>
                     </ul>
-                    <div class="tech-split">
-                        <figure class="tech-visual">
-                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_Projectile GAS damage on hit">
-                                <span class="tech-visual-badge">Blueprint</span>
-                                <img src="screenshots/moba/projectile-gas.png" alt="BP_Projectile GAS damage graph" loading="lazy">
-                                <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
-                            </button>
-                            <figcaption>BP_Projectile – GAS damage on hit</figcaption>
-                        </figure>
-                        <div class="tech-code">
-                            <div class="code-header">
-                                <span class="code-filename">MyPlayerState.cpp</span>
-                                <span class="code-lang">C++</span>
-                            </div>
-                            <pre><code><span class="code-kw">void</span> AMyPlayerState::<span class="code-fn">InitializeGAS</span>(APawn* AvatarActor)
+                    <div class="tech-code tech-code-wide">
+                        <div class="code-header">
+                            <span class="code-filename">MyPlayerState.cpp</span>
+                            <span class="code-lang">C++</span>
+                        </div>
+                        <pre><code><span class="code-kw">void</span> AMyPlayerState::<span class="code-fn">InitializeGAS</span>(APawn* AvatarActor)
 {
     AbilitySystemComponent-&gt;<span class="code-fn">InitAbilityActorInfo</span>(<span class="code-kw">this</span>, AvatarActor);
 
@@ -270,7 +261,6 @@
     <span class="code-kw">if</span> (Data.EvaluatedData.Attribute == <span class="code-fn">GetHealthAttribute</span>())
         <span class="code-fn">SetHealth</span>(FMath::<span class="code-fn">Clamp</span>(GetHealth(), 0.f, GetMaxHealth()));
 }</code></pre>
-                        </div>
                     </div>
                 </article>
 
