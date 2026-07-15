@@ -359,16 +359,42 @@
                             <source src="videos/serverreplication.mp4" type="video/mp4">
                         </video>
                     </div>
-                    <div class="tech-split">
-                        <figure class="tech-visual">
-                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_AutoAttack homing projectile spawn">
+                    <div class="tech-split tech-split-stacked">
+                        <figure class="tech-visual tech-visual-wide">
+                            <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: BP_AutoAttack ability graph">
                                 <span class="tech-visual-badge">Blueprint</span>
-                                <img src="screenshots/moba/auto-attack.png" alt="BP_AutoAttack projectile spawn graph" loading="lazy">
+                                <img src="screenshots/moba/auto-attack.png" alt="BP_AutoAttack ability graph with champion targeting and projectile spawn" loading="lazy">
                                 <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
                             </button>
-                            <figcaption>BP_AutoAttack – homing projectile spawn</figcaption>
+                            <figcaption>BP_AutoAttack – ability graph</figcaption>
                         </figure>
-                        <div class="tech-code">
+                        <div class="tech-visual-grid">
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: projectile hit detection and homing">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/projectile-hit-homing.png" alt="BP_Projectile hit detection, GAS setup and homing logic" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>BP_Projectile – hit detection &amp; homing</figcaption>
+                            </figure>
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: apply damage and VFX">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/projectile-damage-vfx.png" alt="BP_Projectile apply GE_Damage and play hit VFX" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>BP_Projectile – apply damage &amp; VFX</figcaption>
+                            </figure>
+                            <figure class="tech-visual">
+                                <button type="button" class="tech-visual-expand" aria-label="Expand blueprint: projectile debug tests">
+                                    <span class="tech-visual-badge">Blueprint</span>
+                                    <img src="screenshots/moba/projectile-debug.png" alt="BP_Projectile debug prints for hit and shooter entities" loading="lazy">
+                                    <span class="tech-expand-hint" aria-hidden="true"><span class="tech-expand-icon">⤢</span> Click to expand</span>
+                                </button>
+                                <figcaption>BP_Projectile – debug tests</figcaption>
+                            </figure>
+                        </div>
+                        <div class="tech-code tech-code-wide">
                             <div class="code-header">
                                 <span class="code-filename">HybridGasBlueprintLibrary.cpp</span>
                                 <span class="code-lang">C++</span>
